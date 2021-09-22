@@ -1,0 +1,300 @@
+/* variable */
+:root {
+    /* color */
+    --primary-color: hsl(214, 100%, 50%);
+    --primary-variant-color: hsl(214, 100%, 30%);
+
+    --secondary-color: hsl(20, 100%, 50%);
+
+    /* background-color */
+    --background-color: hsl(0, 0%, 100%);
+    --background-variant-color: hsl(0, 0%, 90%);
+
+    /* font-color */
+    --primary-font-color: hsl(0, 0%, 100%);
+    --primary-variant-font-color: hsl(0, 0%, 70%);
+    --secondary-font-color: hsl(0, 0%, 40%);
+    --secondary-variant-font-color: hsl(0, 0%, 30%);
+
+    /* padding */
+    --app-border-padding: 5px;
+
+    /* sizing */
+    --min-width: 280px;
+    --primary-font-size: 16px;
+    --max-width: 768px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-size: var(--primary-font-size);
+}
+
+body {
+    background-color: var(--background-color);
+    padding: var(--app-border-padding);
+    display: grid;
+    place-items: center;
+}
+
+.app-container {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 96vw;
+}
+
+@media only screen and (max-width: 280px) {
+    body {
+        width: var(--min-width);
+    }
+
+    .app-container {
+        width: calc(var(--min-width) - (2 * var(--app-border-padding)));
+        /* background-color: var(--primary-variant-color); */
+    }
+    
+    .popup {
+        width: calc(0.9 * var(--min-width));
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .app-container {
+        width: var(--max-width);
+        /* background-color: var(--primary-color); */
+    }
+    .popup {
+        width: calc(0.9 * var(--max-width));
+    }
+}
+
+header {
+    color: var(--primary-color);
+    width: 100%;
+    height: 5rem;
+    display: grid;
+    place-items: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main nav{
+    width: 100%;
+    background-color: var(--background-variant-color);
+}
+main nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 2.5rem;
+    padding: 0% var(--app-border-padding);
+}
+
+main nav ul li {
+    flex: 1;
+    display: grid;
+    place-items: center;
+}
+
+main nav ul li button {
+    width: 100%;
+    height: 2.5rem;
+    border: none;
+    color: var(--secondary-variant-font-color);
+    background-color: var(--background-variant-color);
+    border-bottom: var(--app-border-padding) solid var(--background-variant-color);
+
+}
+
+main nav ul li button:hover {
+    border-bottom: var(--app-border-padding) solid var(--primary-variant-font-color);
+}
+
+main nav ul li button.active {
+    border-bottom: var(--app-border-padding) solid var(--primary-color);
+}
+
+main .book-ul {
+    width: 100%;
+    padding: calc(var(--app-border-padding));
+}
+
+main .book-ul ul li {
+    color: var(--secondary-variant-font-color);
+    border: 1px solid var(--background-variant-color);
+    border-radius: calc(var(--app-border-padding));
+    padding: calc(var(--app-border-padding));
+    margin-bottom: var(--app-border-padding);
+    display: flex;
+    width: 100%;
+}
+
+main .book-ul ul li .book-container {
+    flex: 3 1 0;
+    min-width: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: var(--secondary-font-color);
+}
+
+main .book-ul ul li .book-container h3 {
+    overflow-wrap: break-word;
+}
+
+main .book-ul ul li .book-container p {
+    overflow-wrap: break-word;
+}
+main .book-ul ul li .book-btns {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: var(--app-border-padding);
+}
+
+main .book-ul ul li .book-btns button {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: 50%;
+    color: var(--primary-variant-font-color);
+    display: grid;
+    place-items: center;
+    margin: var(--app-border-padding);
+}
+
+main .book-ul ul li .book-btns button:hover {
+    color: var(--secondary-variant-font-color);
+}
+
+main .book-ul .book-btns button span {
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+main button#add-btn {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-font-color);
+    background-color: var(--primary-color);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+main button#add-btn:hover {
+    color: var(--primary-variant-font-color);
+}
+
+main button#add-btn:active {
+    background-color: var(--primary-variant-color);
+    color: var(--primary-font-color);
+}
+
+main.hidden {
+    display: none;
+}
+
+.popup {
+    position: absolute;
+    padding: calc(2 * var(--app-border-padding));
+    border-radius: calc(2 * var(--app-border-padding));
+    display: none;
+    color: var(--secondary-variant-font-color);
+}
+
+.popup.active {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background-color: var(--background-variant-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.popup #close-btn {
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0.1rem;
+    font-weight: bolder;
+    border-radius: 50%;
+    align-self: flex-end;
+    color: var(--primary-font-color);
+    background-color: var(--primary-variant-font-color);
+    border: none;
+    cursor: pointer;
+}
+
+.popup .add-form {
+    padding: calc(2 * var(--app-border-padding)) calc(4 * var(--app-border-padding));
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.popup .add-form h2 {
+    font-size: 2rem;
+    padding-bottom: var(--app-border-padding);
+}
+
+.popup .add-form-el {
+    padding: calc(2 * var(--app-border-padding)) var(--app-border-padding);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.popup .add-form-el input {
+    margin: var(--app-border-padding) 0;
+    padding: calc(2 * var(--app-border-padding));
+    border-radius: var(--app-border-padding);
+    border: 1px solid var(--primary-variant-font-color);
+    box-shadow: none;
+    outline: var(--secondary-variant-font-color);
+}
+
+.popup .add-form-el input:invalid {
+    border: 1px solid var(--secondary-color);
+}
+
+.popup .add-form-el button {
+    height: 2.8rem;
+    border-radius: var(--app-border-padding);
+    border: none;
+    background: var(--primary-color);
+    color: var(--primary-font-color);
+    font-style: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.popup .add-form-el button:active {
+    background-color: var(--primary-variant-color);
+}
+
+.popup .add-form-el button.invalid {
+    background-color: var(--secondary-color);
+}
